@@ -77,7 +77,6 @@ GEM
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
       sinatra (>= 1.0)
-    sinatra-formhelpers-ng (1.9.1)
     slop (3.6.0)
     thread_safe (0.3.6)
     tilt (2.0.7)
@@ -91,6 +90,7 @@ DEPENDENCIES
   activerecord
   dotenv
   heroku
+  jwt
   oauth2
   pg
   pry
@@ -98,7 +98,6 @@ DEPENDENCIES
   rest-client
   sinatra
   sinatra-activerecord
-  sinatra-formhelpers-ng
 
 BUNDLED WITH
    1.15.1

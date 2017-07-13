@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'jwt'
 require './helpers/form_helpers'
 require 'rubygems'
 require 'dotenv'
