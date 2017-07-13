@@ -32,7 +32,8 @@ get '/oauth2/callback' do
     },
     :accept => :json)
 
-    out = RestClient.get("https://api.github.com/user",{:params=> {:access_token => access_token}})
+  access_token = JSON.parse(resp)['access_token']
+  out = RestClient.get("https://api.github.com/user",{:params=> {:access_token => access_token}})
   #binding.pry
   @login = JSON.parse(out)['login']
   unless out.nil?
@@ -49,19 +50,11 @@ get '/signup' do
   erb :signup
 end
 post '/signup' do
-  @user = User.create(name: params[:name],email: params[:email],password: params[:password])
+  @user = User.create(name: params[:user][:name],email: params[:user][:email],password: params[:user][:password])
   session[:id] = @user.id
-  payload = {:user_id => session[:id]}
-@token = JWT.encode payload, ENV['HMAC_SECRET'], 'HS256'
- # redirect to '/index'
-  session[:token] = @token
+  redirect to '/index'
 end
 get '/index' do
   "Welcome #{User.find(session[:id]).name}"
 end
-  post '/login' do
-@name = params[:name]
-binding.pry
-decoded_token = JWT.decode session[:token], ENV['HMAC_SECRET'], true, { :algorithm => 'HS256' }
-puts decoded_token
-end
+

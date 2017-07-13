@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Please sign in to continue</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/signin.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-     
-      <form class="form-signin" role="form" action="/signup" method="POST">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" name="name" value="name" class="form-control" placeholder="username" required autofocus>
-        <input type="text" name="email" value="email" class="form-control" placeholder="username" required autofocus>
-        <input type="password" name="password" value="password" class="form-control" placeholder="password" required>
-        <input type="password" name="password_confirmation" value="password_confirmation" class="form-control" placeholder="password" required>
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-      </form>
-    </div>
-  </body>
-</html>
+<p>
+  Fill out the below form to sign up.
+  For more information, visit our <%= link 'FAQ', '/faq' %>
+</p>
+
+<%= form('/signup', :post) %>
+<h3>Input user name</h3>
+<%= input(:user, :name) %>
+<h3>Input user email</h3>
+
+<%= input(:user, :email, :size => 40) %>
+<h3>Input user password</h3>
+
+<%= password(:user, :password) %>
+<h3>Confirm user password</h3>
+<%= password(:user, :password_confirmation) %>
 
 
-
-
-
-
-
+<%= submit %>
