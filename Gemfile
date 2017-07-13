@@ -11,3 +11,4 @@ gem "rake"
 gem 'rest-client'
 gem 'dotenv'
 gem 'pry'
+gem 'jwt'

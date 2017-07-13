@@ -1,0 +1,13 @@
+<h2>Please login</h2>
+</br>
+
+<%= form('/users', :post) %>
+<div>User name</br>
+<%= input(:user, :name) %>
+</div>
+<div>Password</br>
+
+<%= password(:user, :password) %>
+</div>
+
+<%= submit %>

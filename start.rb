@@ -1,4 +1,5 @@
 require 'dotenv'
+require './helpers/form_helpers'
 require 'rubygems'
 require 'dotenv'
 Dotenv.load
@@ -14,7 +15,7 @@ CLIENT_SECRET = ENV['CLIENT_SECRET']
 GET_REQUEST = ENV['GET_REQUEST']
 REDIRECT_URI = ENV['REDIRECT_URI']
 POST_REQUEST = ENV['POST_REQUEST']
-
+enable :sessions
 get '/' do
   erb :index, :locals => {:client_id => CLIENT_ID}
 end
@@ -40,5 +41,19 @@ get '/oauth2/callback' do
     erb :user
   end
 end
-get '/user' do
-  end
+helpers FormHelpers
+    get '/login' do
+  erb :login
+end
+get '/signup' do
+  erb :signup
+end
+post '/signup' do
+  @user = User.create(name: params[:user][:name],email: params[:user][:email],password: params[:user][:password])
+  session[:id] = @user.id
+  redirect to '/index'
+end
+get '/index' do
+  "Welcome #{User.find(session[:id]).name}"
+end
+
