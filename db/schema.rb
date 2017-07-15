@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170711063338) do
     t.string "email"
     t.string "password"
     t.string "password_confirmation"
+    t.string "access_token"
   end
 
 end

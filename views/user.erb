@@ -1,2 +1,18 @@
-<h1>Hello <%= @login %></h1>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Please sign in to continue</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
+    </head>
+    <body>
+      <div class="container">
+        <div class="col-sm-2">
+          <h1>Hello <%= @login %></h1>
+          <a href="/logout"><button class="btn btn-lg btn-primary btn-block" >Logout</button></a>
+        </div>
+      </div>
+  </body>
+</html>
