@@ -3,21 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Please sign in to continue</title>
+    <title>Please up in to continue</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-     
+
       <form class="form-signin" role="form" action="/signup" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" name="name" value="name" class="form-control" placeholder="username" required autofocus>
-         <input type="text" name="email" value="email" class="form-control" placeholder="username" required autofocus>
+         <input type="text" name="email" value="email" class="form-control" placeholder="useremail" required autofocus>
         <input type="password" name="password" value="password" class="form-control" placeholder="password" required>
         <input type="password" name="password_confirmation" value="password_confirmation" class="form-control" placeholder="password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
       </form>
+      <div>
+      <a href="/login">login</a>
+      </div>
+      <div>
+      <a href="/">Home</a>
+      </div>
     </div>
   </body>
 </html>
