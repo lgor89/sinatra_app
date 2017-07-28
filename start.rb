@@ -10,7 +10,7 @@ require_relative 'config/boot.rb'
 require 'json'
 require 'net/http'
 require 'pry'
-Dotenv.load
+require 'dotenv/load'
 CLIENT_ID = ENV['CLIENT_ID']
 CLIENT_SECRET = ENV['CLIENT_SECRET']
 GET_REQUEST = ENV['GET_REQUEST']
@@ -27,9 +27,11 @@ get '/oauth2/callback' do
   code = params[:code]
   response = RestClient.post(
     POST_REQUEST.to_s,
-    { client_id: CLIENT_ID,
+    {
+      client_id: CLIENT_ID,
       client_secret: CLIENT_SECRET,
-      code: code },
+      code: code
+    },
     accept: :json
   )
   access_token = JSON.parse(response)['access_token']
@@ -70,10 +72,10 @@ end
 #--------------------------------------------------------
 post '/login' do
   email = params[:email]
-  if User.find_by_email(email).nil?
+  @user = User.find_by(email: email)
+  if @user.nil?
     redirect to '/signup'
   else
-    @user = User.find_by_email(email)
     user_password = @user.password
     encrypt_user_password = BCrypt::Password.new(user_password)
     if encrypt_user_password == params[:password]
