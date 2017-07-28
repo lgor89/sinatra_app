@@ -110,7 +110,7 @@ def current_user?
   if session[:token].nil?
     false
   else
-    decoded_token = JWT.decode session[:token], ENV['HMAC_SECRET'], true, algorithm: 'HS256'
+    decoded_token = JWT.decode(session[:token], ENV['HMAC_SECRET'], true, algorithm: 'HS256')
     @current_user_id = decoded_token.first['user_id']
     @current_user = User.find(@current_user_id)
   end
@@ -118,7 +118,7 @@ end
 
 def crypt_token
   payload = { user_id: @user.id }
-  token = JWT.encode payload, ENV['HMAC_SECRET'], 'HS256'
+  token = JWT.encode(payload, ENV['HMAC_SECRET'], 'HS256')
   session[:id] = @user.id
   session[:token] = token
 end
