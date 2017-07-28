@@ -43,7 +43,6 @@ get '/oauth2/callback' do
     redirect to '/'
   else
     session[:name] = @user.name
-    binding.pry
     redirect to '/user'
   end
 end
