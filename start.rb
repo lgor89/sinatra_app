@@ -36,14 +36,22 @@ get '/oauth2/callback' do
   )
   access_token = JSON.parse(response)['access_token']
   out = RestClient.get('https://api.github.com/user', params: { access_token: access_token })
-  login = JSON.parse(out)['login']
-  @user = User.create(name: login, access_token: access_token)
+  @login = JSON.parse(out)['login']
+  @user = User.create(name: @login, access_token: access_token)
   crypt_token
   if out.nil?
     redirect to '/'
   else
-    session[:name] = @user.name
+    session[:name] = @login
     redirect to '/user'
+  end
+end
+#-----------------------------------------------------------
+get '/index' do
+  if current_user?
+    "Welcome #{User.find(session[:id]).name}"
+  else
+    redirect to '/'
   end
 end
 #--------------------------------------------------------
