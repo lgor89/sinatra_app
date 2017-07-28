@@ -1,16 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Please sign in to continue</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
   </head>
   <body>
-    <p>
-      Well, hello there!
-    </p>
-    <p>
-
-      <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>">Sign </a> with Github account</a>
-    </p>
-    <p><a href="/signup">Sign Up</a></p>
-    <p><a href="/login">Log in</a></p>
-
+    <div class="container">
+      <div class="col-sm-2">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Well, hello there!</div>
+          <div class="panel-body">
+        <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>">Sign </a> with Github account</a>
+          </div>
+    </div>
+    </div>
+    </div>
   </body>
 </html>
